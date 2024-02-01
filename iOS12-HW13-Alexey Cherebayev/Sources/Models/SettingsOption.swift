@@ -59,3 +59,11 @@ extension Section {
         return models
     }
 }
+
+extension Section {
+    static func getData() -> [Section] {
+        [
+            // тут твои данные
+        ]
+    }
+}
