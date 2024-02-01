@@ -6,9 +6,31 @@
 //
 
 import UIKit
+import SnapKit
 
 class DetailViewController: UIViewController {
     
+    var viewTitle: String? = nil
+    var viewImage: UIImage? = nil
+    var imageColor: UIColor? = nil
+    
+    // MARK: - UI
+    
+    private lazy var pictureView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 10
+        view.addSubview(pictureImageView)
+        view.backgroundColor = imageColor
+        return view
+    }()
+    
+    private lazy var pictureImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = viewImage
+        imageView.tintColor = UIColor.white
+        return imageView
+    }()
     // MARK: - Properties
     
     private var viewTitle: String? = nil
@@ -19,25 +41,34 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupHierarchy()
+        setupHeirarchy()
+        setupLayout()
     }
     
     // MARK: - Setup
     
     private func setupView() {
         title = viewTitle
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.view.backgroundColor = .systemBackground
     }
     
-    private func setupHierarchy() {
-        
+    private func setupHeirarchy() {
+        view.addSubviews([
+            pictureView
+        ])
     }
     
-    static func newInstance(viewTitle: String?, viewImage: UIImage?) -> DetailViewController {
-        let bundle = Bundle.init(for: DetailViewController.self)
-        let vc = DetailViewController.init(nibName: "DetailViewController", bundle: bundle)
-        vc.viewTitle = viewTitle
-        vc.viewImage = viewImage
-        return vc
+    private func setupLayout() {
+        pictureView.snp.makeConstraints { make in
+            make.centerX.equalTo(view.snp.centerX)
+            make.centerY.equalTo(view.snp.centerY)
+            make.width.height.equalTo(300)
+        }
+        pictureImageView.snp.makeConstraints { make in
+            make.centerX.equalTo(pictureView.snp.centerX)
+            make.centerY.equalTo(pictureView.snp.centerY)
+            make.width.height.equalTo(100)
+        }
     }
-
 }
