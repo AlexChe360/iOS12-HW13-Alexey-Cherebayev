@@ -12,6 +12,7 @@ class SettingTableViewCell: UITableViewCell {
     // MARK - Variables
 
     static let identifier = "SettingTableViewCell"
+    var selector: (() -> Void)?
     
     // MARK: - UI
     
@@ -47,6 +48,7 @@ class SettingTableViewCell: UITableViewCell {
         ])
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectCell)))
     }
     
     required init?(coder: NSCoder) {
@@ -74,9 +76,14 @@ class SettingTableViewCell: UITableViewCell {
         iconContainer.backgroundColor = nil
     }
     
-    public func binding(with model: SettingsOption) {
+    public func configure(with model: SettingsOption) {
         optionsLabel.text = model.title
         iconImageView.image = model.icon
-        iconContainer.backgroundColor = model.iconBackgroundIcon
+        iconContainer.backgroundColor = model.iconBackgroundColor
+    }
+    
+    // MARK: - Actions
+    @objc func selectCell() {
+        self.selector?()
     }
 }

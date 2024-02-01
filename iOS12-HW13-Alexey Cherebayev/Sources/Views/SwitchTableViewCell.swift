@@ -94,7 +94,7 @@ class SwitchTableViewCell: UITableViewCell {
         optionSwitch.isOn = false
     }
     
-    public func binding(with model: SettingsSwitchOption) {
+    public func configure(with model: SettingsSwitchOption) {
         optionsLabel.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundIcon
