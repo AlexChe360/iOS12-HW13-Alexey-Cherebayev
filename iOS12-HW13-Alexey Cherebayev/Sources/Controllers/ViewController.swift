@@ -41,7 +41,6 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
-        setupConfigure()
     }
     
     private func setupHierarchy() {
