@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: - Setup
+    
     private func setupView() {
         title = viewTitle
     }
