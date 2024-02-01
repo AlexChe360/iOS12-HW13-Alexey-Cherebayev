@@ -31,10 +31,6 @@ class DetailViewController: UIViewController {
         imageView.tintColor = UIColor.white
         return imageView
     }()
-    // MARK: - Properties
-    
-    private var viewTitle: String? = nil
-    private var viewImage: UIImage? = nil
 
     // MARK: - Lifecycle
     
