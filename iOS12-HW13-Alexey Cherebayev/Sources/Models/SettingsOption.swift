@@ -31,3 +31,11 @@ struct SettingsOption {
     let iconBackgroundIcon: UIColor
     let handler: (() -> Void)
 }
+
+extension Section {
+    static func getData() -> [Section] {
+        [
+            // тут твои данные
+        ]
+    }
+}
