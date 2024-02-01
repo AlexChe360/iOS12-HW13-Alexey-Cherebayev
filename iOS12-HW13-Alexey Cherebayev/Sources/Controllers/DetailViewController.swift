@@ -13,7 +13,6 @@ class DetailViewController: UIViewController {
     private var viewTitle: String? = nil
     private var viewImage: UIImage? = nil
 
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
