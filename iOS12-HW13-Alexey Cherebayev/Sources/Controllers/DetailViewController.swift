@@ -10,6 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     // MARK: - Properties
+    
     private var viewTitle: String? = nil
     private var viewImage: UIImage? = nil
 
